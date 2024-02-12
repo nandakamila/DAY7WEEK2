@@ -215,57 +215,56 @@ class ShootingGame {
     }
 
     start() {
-        start() {
-            for (;this.player1.health > 0 && this.player2.health > 0;) {
-                // PLAYER A RANDOM ITEM
-                const item1 = this.getRandomItem();
-                if(item1.health!=0){
-                    console.log("Player A got a health Potion : Health +", item1.health);
-                }else{
-                    console.log("Player A got a power Potion : Power +", item1.power);
-                }
-                this.player1.useItem(item1);
-        
-                console.log("Player A uses an item:");
-                this.player1.showStatus();
-        
-                // PLAYER B RANDOM ITEM
-                console.log("Player B's turn:");
-                this.player2.showStatus();
-        
-                const item2 = this.getRandomItem();
-                if(item2.health!=0){
-                    console.log("Player B got a health Potion : Health +", item2.health);
-                }else{
-                    console.log("Player B got a power Potion : Power +", item2.power);
-                }
-                this.player2.useItem(item2);
-        
-                console.log("Player B uses an item:");
-                this.player2.showStatus();
-        
-                // PLAYER A HIT PLAYER B
-                this.player1.hit(this.player2.power);
-                console.log("Player A shoots Player B!");
-                this.player1.showStatus();
-        
-                if (this.player1.health <= 0) {
-                    console.log("Player B wins!");
-                    break;
-                }
-        
-                // PLAYER B HIT PLAYER A
-                this.player2.hit(this.player1.power);
-                console.log("Player B shoots Player A:");
-                this.player2.showStatus();
-        
-                if (this.player2.health <= 0) {
-                    console.log("Player A wins!");
-                    break;
-                }
+        for (;this.player1.health > 0 && this.player2.health > 0;) {
+            // PLAYER A RANDOM ITEM
+            const item1 = this.getRandomItem();
+            if(item1.health!=0){
+                console.log("Player A got a health Potion : Health +", item1.health);
+            }else{
+                console.log("Player A got a power Potion : Power +", item1.power);
             }
-        }        
-    }
+            this.player1.useItem(item1);
+    
+            console.log("Player A uses an item:");
+            this.player1.showStatus();
+    
+            // PLAYER B RANDOM ITEM
+            console.log("Player B's turn:");
+            this.player2.showStatus();
+    
+            const item2 = this.getRandomItem();
+            if(item2.health!=0){
+                console.log("Player B got a health Potion : Health +", item2.health);
+            }else{
+                console.log("Player B got a power Potion : Power +", item2.power);
+            }
+            this.player2.useItem(item2);
+    
+            console.log("Player B uses an item:");
+            this.player2.showStatus();
+    
+            // PLAYER A HIT PLAYER B
+            this.player2.hit(this.player1.power);
+            console.log("Player A shoots Player B!");
+            this.player2.showStatus();
+    
+            if (this.player2.health <= 0) {
+                console.log("Player A wins!");
+                break
+            }
+    
+            // PLAYER B HIT PLAYER A
+            this.player1.hit(this.player2.power);
+            console.log("Player B shoots Player A:");
+            this.player1.showStatus();
+    
+            if (this.player1.health <= 0) {
+                console.log("Player B wins!");
+                break;
+            }
+        }
+    }        
+    
 }
 
 const p1 = new Player("Player A");
